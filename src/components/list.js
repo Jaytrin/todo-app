@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
-import dummyListData from '../dummy_data/list_data';
+import React from 'react';
+import Item from './item';
 
-const List = (props) =>{
-    const listElements = props.data.map((item,index)=>{
-            return <li className="collection-item" key={item._id}>{item.title}</li>
-        });
+const List = (props) => {
+    const listElements = props.data.map( (item, index) => {
+        return <Item key={item._id} item={item} delete={() => props.delete(index)}/>
+    });  
 
-        return (
-                <ul className ="collection">
-                    {listElements}
-                </ul>
-        );
-    }
+    return (
+        <ul className="collection">
+            {listElements}
+        </ul>
+    )
+}
 
 export default List;
